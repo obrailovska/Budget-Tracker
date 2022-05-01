@@ -19,11 +19,11 @@ request.onerror = function (event) {
   console.log(event.target.errorCode);
 };
 
-// this function will be executed what we try to add something with no internet connection
+// // this function will be executed what we try to add something with no internet connection
 function saveRecord(record) {
   // open a new transaction with the database with read and write permissions
   const transaction = db.transaction(["budgetTransaction"], "readwrite");
-
+  console.log("YOOOOOO", transaction);
   // access the object store for `budgetTransaction`
   const budgetObjectStore = transaction.objectStore("budgetTransaction");
 
@@ -33,8 +33,10 @@ function saveRecord(record) {
 
 function uploadNewBudget() {
   // open a transaction on the db
+  console.log("DATABASE", db);
+  if (!db) return;
   const transaction = db.transaction(["budgetTransaction"], "readwrite");
-
+  console.log("yoyoyoy", transaction);
   // accessing object store
   const budgetObjectStore = transaction.objectStore("budgetTransaction");
 
